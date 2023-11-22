@@ -1,0 +1,26 @@
+{
+  "name": "2.igniting-our-app",
+  "version": "1.0.0",
+  "description": "This is React Project By Arpitha ",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arpithagowdagm/React-Project.git"
+  },
+  "keywords": [
+    "react",
+    "Arpitha"
+  ],
+  "author": "Arpitha GM",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arpithagowdagm/React-Project/issues"
+  },
+  "homepage": "https://github.com/arpithagowdagm/React-Project#readme",
+  "devDependencies": {
+    "parcel": "^2.10.3"
+  }
+}
