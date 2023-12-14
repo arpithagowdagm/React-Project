@@ -1,0 +1,39 @@
+{
+  "name": "react-project",
+  "version": "1.0.0",
+  "description": "React project by Arpitha",
+  "scripts": {
+    "start12": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arpithagowdagm/React-Project.git"
+  },
+  "keywords": [
+    "react",
+    "React",
+    "JS",
+    "React",
+    "Project"
+  ],
+  "author": "Arpitha GM",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arpithagowdagm/React-Project/issues"
+  },
+  "homepage": "https://github.com/arpithagowdagm/React-Project#readme",
+  "devDependencies": {
+    "parcel": "^2.10.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.1"
+  },
+  "browserslist": [
+    "last 50 version"
+  ]
+}
