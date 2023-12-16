@@ -11,13 +11,17 @@ useEffect(()=>{
 },[])
 
 const getRestaurantItem = async()=> {
-    const RestaurantMenu =  await fetch(MENU_API+id);
-    const menu = await RestaurantMenu.json();
-    setMenuList(menu.data.cards)
+    try{
+        const RestaurantMenu =  await fetch(MENU_API+id);
+        const menu = await RestaurantMenu.json();
+        setMenuList(menu.data.cards)
+}
+catch(error){
+    console.error("Menu API",error);
+}
 }
 if(menuList === null) return <Shimmer />
 
-console.log(menuList);
 const {name,costForTwoMessage,cuisines} = menuList[0]?.card?.card?.info;
 const menu =  menuList[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards;
 
