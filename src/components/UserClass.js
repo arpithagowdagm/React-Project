@@ -35,8 +35,8 @@ render(){
 
 
     return (
-        <div className="aboutList">
-            <img  className="aboutProfil" src={avatar_url}></img>
+        <div className="m-4">
+            <img  className="w-40" src={avatar_url}></img>
              <h2>{name + " from (Class)"}</h2>
              <h4>Software Engeerie </h4>
              <h4>{"from "+ location }</h4>

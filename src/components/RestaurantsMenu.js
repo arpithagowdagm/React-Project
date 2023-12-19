@@ -1,38 +1,36 @@
-import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
-import {MENU_API} from "../utils/constants";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
+import useRestaurantsMenu from "../utils/useRestaurantsMenu";
+import MenuCategory from "../components/MenuCategory";
 
 const RestaurantsMenu = (props) => {
-const [menuList,setMenuList] =  useState(null);
+const [expandColapse, setexpandColapse] = useState(null)
 const {id} = useParams();
-useEffect(()=>{
-        getRestaurantItem();
-},[])
-
-const getRestaurantItem = async()=> {
-    try{
-        const RestaurantMenu =  await fetch(MENU_API+id);
-        const menu = await RestaurantMenu.json();
-        setMenuList(menu.data.cards)
-}
-catch(error){
-    console.error("Menu API",error);
-}
-}
+const menuList = useRestaurantsMenu(id);
 if(menuList === null) return <Shimmer />
 
 const {name,costForTwoMessage,cuisines} = menuList[0]?.card?.card?.info;
-const menu =  menuList[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards;
-
+const menu =  menuList[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((card)=> card?.card?.card['@type'] == "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+);
         return (
-            <div className="restaurantmenu">
-                <h2>{name}</h2>
-                <p>{cuisines.join(", ")} - {costForTwoMessage}</p>
-                <ul>
-                {menu && menu.map((item)=>(<li key={item.card.info.id}>{item.card.info.name} - Rs {item.card.info.price ||  item.card.info.defaultPrice}</li>))}
-                
-                </ul>
+           
+            <div className=" ">
+                <div className="justify-center text-center m-3 ">
+                <h2 className="font-bold py-4 text-2xl">{name}</h2>
+                <p className="">{cuisines.join(", ")} - {costForTwoMessage}</p>
+                </div>
+                {menu && menu.map((item,index)=> 
+                    <MenuCategory key ={item.card.card.title} 
+                                  category={item.card.card} 
+                                  expandColapse={index === expandColapse ? true :false }
+                                  setexpandColapse={()=>{
+                                    return setexpandColapse((prevstate)=>{
+                                        return prevstate === index ? null : index;
+                                    })
+                                  }
+                                }
+                />)}
 
             </div>
         )

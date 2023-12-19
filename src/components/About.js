@@ -1,19 +1,17 @@
-import UserName from './UserName';
 import UserClass from './UserClass';
-import React,{ useEffect } from 'react';
-
-
+import React, {useContext, useEffect} from 'react';
+import UserContext from "../utils/UserContext";
 class About extends React.Component{
-
     constructor(props){
             super(props);
     }
-
-
     render(){
-        return (<div>
-            <h2>I am Arpitha GM</h2>
-            <h3>Working in Genpact</h3>
+        return (
+        <div className='m-3'>
+            <h2 className='m-4'>I am Arpitha GM Working in Genpact ✌️</h2>
+            <UserContext.Consumer>
+                    {({loggedInuser})=><h5 className='m-4'>{loggedInuser}</h5>}
+                </UserContext.Consumer>
             <UserClass name="first" location="Gollahalli Bidadi"/>
         </div>)
     }

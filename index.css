@@ -1,4 +1,10 @@
-.nav-item > ul >li
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+/* .nav-item > ul >li
 {
     list-style-type: none;
     padding: 20px;   
@@ -36,7 +42,6 @@
 .resto-logo{
     width: 100%;
     height: 40%;
-   /* //padding: 5px; */
 }
 .search{
     padding: 5px;
@@ -82,4 +87,4 @@ margin-right: 5px;
     width: 100px;
     height: 100px;
     margin-top: 5px;
-}
+} */
