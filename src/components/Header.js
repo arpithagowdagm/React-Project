@@ -3,11 +3,12 @@ import { CDN_LOGO } from "../utils/constants";
 import {Link} from 'react-router-dom';
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 const Header = () => {
     const [loginBtn,  setLoginBtn] = useState("login")
     const {loggedInuser} = useContext(UserContext);
-    console.log(loggedInuser);
     const onLineStatus = useOnlineStatus();
+    const items = useSelector((store)=>store.cart.items);
     useEffect(()=>{
     },[loginBtn])
 
@@ -19,11 +20,12 @@ const Header = () => {
             <div className="">
                  <ul className="flex justify-center p-5">
                     <li className="m-4">Online Status is: {onLineStatus? "🟢": "🔴" }</li>
-                    <li className="m-4" ><Link className="lineRemove" to="/">Home </Link></li>
-                    <li className="m-4"><Link className="lineRemove" to="/about">About</Link></li> 
-                    <li className="m-4"><Link className="lineRemove" to="/contact">Contact us</Link></li>
-                    <li className="m-4"><Link className="lineRemove" to="/grocery">Grocery</Link></li>
-                    <li className="m-4">Cart</li>
+                    <li className="m-4" ><Link to="/">Home </Link></li>
+                    <li className="m-4"><Link to="/about">About</Link></li> 
+                    <li className="m-4"><Link to="/contact">Contact us</Link></li>
+                    <li className="m-4"><Link to="/grocery">Grocery</Link></li>
+                    <li className="my-4"><Link to="/cart">Cart</Link></li>
+                    <li className="my-4 mr-6 font-bold">({items.length}-Item)</li>
                     <button className="loginBtn" onClick={()=>{
                         loginBtn == "login" ? setLoginBtn("logout") : setLoginBtn("login")
                     }}>{loginBtn}</button>
